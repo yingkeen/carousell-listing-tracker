@@ -12,7 +12,7 @@ const botToken = process.env.BOT_TOKEN;
 const botChatID = process.env.BOT_CHATID;
 
 const job = new CronJob({
-  cronTime: process.env.SLEEP_TIME,
+  cronTime: process.env.CRON_EXPRESSION,
   onTick: loadPages,
 });
 
@@ -58,9 +58,9 @@ async function loadPages() {
         const diffListings = getNewListings(prevListings[item], listings);
 
         if (diffListings.length === 0) {
-          console.log(`${dateTime}\t There is no update for ${item}...`);
+          console.log(`${dateTime}\t There is no update for "${item}"...`);
         } else {
-          console.log(`${dateTime}\t There is an update for ${item}!!`);
+          console.log(`${dateTime}\t There is an update for "${item}"!!`);
           const messages = createListingsMessages(diffListings);
           console.log(messages);
 
