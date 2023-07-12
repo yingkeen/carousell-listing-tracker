@@ -99,8 +99,8 @@ function processListings(data) {
       return (
         element.hasOwnProperty("listingID") &&
         element.listingID !== 0 &&
-        !element.aboveFold[0].component === "active_bump" &&
-        !element.hasOwnProperty("promoted")
+        (!element.aboveFold[0].component === "active_bump" ||
+        !element.hasOwnProperty("promoted"))
       );
     })
     .map((element) => {
